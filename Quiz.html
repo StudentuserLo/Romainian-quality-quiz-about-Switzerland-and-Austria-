@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .question {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 2px 8px 2px rgba(0,0,0,0.1);
+        }
+        .options {
+            margin-left: 20px;
+        }
+        #score {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <div id="quiz"></div>
+    <div id="score"></div>
+
+    <script>
+        const quizData = [
+            { q: 'Which is the largest city in Switzerland?', options: ['Geneva', 'Zurich', 'Bern', 'Lucerne'], answer: 1 },
+            { q: 'What is the official currency of Austria?', options: ['Euro', 'Swiss Franc', 'Austrian Dollar', 'Pound'], answer: 0 },
+            { q: 'Which famous physicist developed the theory of relativity while working in a patent office in Switzerland?', options: ['Isaac Newton', 'Albert Einstein', 'Niels Bohr', 'Richard Feynman'], answer: 1 },
+            { q: 'Which Austrian city is famous for its annual Salzburg Festival, a series of opera, concert and theatre performances?', options: ['Vienna', 'Graz', 'Linz', 'Salzburg'], answer: 3 },
+            { q: 'What is Switzerland\'s most famous food export?', options: ['Pizza', 'Chocolate', 'Sushi', 'Tacos'], answer: 1 },
+            { q: 'Who is a famous Austrian classical music composer?', options: ['Wolfgang Amadeus Mozart', 'Ludwig van Beethoven', 'Johann Sebastian Bach', 'Franz Schubert'], answer: 0 },
+            { q: 'What is the official language of Switzerland?', options: ['German only', 'French only', 'Italian only', 'Multiple languages including German, French, Italian and Romansh'], answer: 3 },
+            { q: 'Which Austrian city is known as the City of Music and the City of Dreams?', options: ['Vienna', 'Salzburg', 'Innsbruck', 'Graz'], answer: 0 },
+            { q: 'What mountain range spans both Switzerland and Austria?', options: ['The Rocky Mountains', 'The Himalayas', 'The Andes', 'The Alps'], answer: 3 },
+            { q: 'Which Swiss city hosts the headquarters of many international organizations, including the Red Cross?', options: ['Geneva', 'Zurich', 'Basel', 'Bern'], answer: 0 }
+        ];
+
+        let score = 0;
+        const quizContainer = document.getElementById('quiz');
+        quizData.forEach((data, idx) => {
+            const question = document.createElement('div');
+            question.className = 'question';
+            question.innerHTML = `<p>${idx+1}. ${data.q}</p>`;
+            const options = document.createElement('div');
+            options.className = 'options';
+            data.options.forEach((option, index) => {
+                const label = document.createElement('label');
+                label.innerHTML = `<input type="radio" name="question${idx}" value="${index}">${option}`;
+                options.appendChild(label);
+                options.appendChild(document.createElement('br'));
+            });
+            question.appendChild(options);
+            quizContainer.appendChild(question);
+        });
+
+        const button = document.createElement('button');
+        button.innerText = 'Submit';
+        button.onclick = function() {
+            const inputs = document.getElementsByTagName('input');
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].checked) {
+                    const qIndex = Math.floor(i / 4);
+                    if (quizData[qIndex].answer == inputs[i].value) {
+                        score++;
+                    }
+                }
+            }
+            document.getElementById('score').innerText = `You scored: ${score} out of ${quizData.length}`;
+        };
+        quizContainer.appendChild(button);
+    </script>
+</body>
+</Sure, let's enhance the design by adding some more CSS for a more appealing look:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .question {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 2px 8px 2px rgba(0,0,0,0.1);
+        }
+        .options {
+            margin-left: 20px;
+        }
+        #score {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <div id="quiz"></div>
+    <div id="score"></div>
+
+    <script>
+        const quizData = [
+            { q: 'Which is the largest city in Switzerland?', options: ['Geneva', 'Zurich', 'Bern', 'Lucerne'], answer: 1 },
+            { q: 'What is the official currency of Austria?', options: ['Euro', 'Swiss Franc', 'Austrian Dollar', 'Pound'], answer: 0 },
+            { q: 'Which famous physicist developed the theory of relativity while working in a patent office in Switzerland?', options: ['Isaac Newton', 'Albert Einstein', 'Niels Bohr', 'Richard Feynman'], answer: 1 },
+            { q: 'Which Austrian city is famous for its annual Salzburg Festival, a series of opera, concert and theatre performances?', options: ['Vienna', 'Graz', 'Linz', 'Salzburg'], answer: 3 },
+            { q: 'What is Switzerland\'s most famous food export?', options: ['Pizza', 'Chocolate', 'Sushi', 'Tacos'], answer: 1 },
+            { q: 'Who is a famous Austrian classical music composer?', options: ['Wolfgang Amadeus Mozart', 'Ludwig van Beethoven', 'Johann Sebastian Bach', 'Franz Schubert'], answer: 0 },
+            { q: 'What is the official language of Switzerland?', options: ['German only', 'French only', 'Italian only', 'Multiple languages including German, French, Italian and Romansh'], answer: 3 },
+            { q: 'Which Austrian city is known as the City of Music and the City of Dreams?', options: ['Vienna', 'Salzburg', 'Innsbruck', 'Graz'], answer: 0 },
+            { q: 'What mountain range spans both Switzerland and Austria?', options: ['The Rocky Mountains', 'The Himalayas', 'The Andes', 'The Alps'], answer: 3 },
+            { q: 'Which Swiss city hosts the headquarters of many international organizations, including the Red Cross?', options: ['Geneva', 'Zurich', 'Basel', 'Bern'], answer: 0 }
+        ];
+
+        let score = 0;
+        const quizContainer = document.getElementById('quiz');
+        quizData.forEach((data, idx) => {
+            const question = document.createElement('div');
+            question.className = 'question';
+            question.innerHTML = `<p>${idx+1}. ${data.q}</p>`;
+            const options = document.createElement('div');
+            options.className = 'options';
+            data.options.forEach((option, index) => {
+                const label = document.createElement('label');
+                label.innerHTML = `<input type="radio" name="question${idx}" value="${index}">${option}`;
+                options.appendChild(label);
+                options.appendChild(document.createElement('br'));
+            });
+            question.appendChild(options);
+            quizContainer.appendChild(question);
+        });
+
+        const button = document.createElement('button');
+        button.innerText = 'Submit';
+        button.onclick = function() {
+            const inputs = document.getElementsByTagName('input');
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].checked) {
+                    const qIndex = Math.floor(i / 4);
+                    if (quizData[qIndex].answer == inputs[i].value) {
+                        score++;
+                    }
+                }
+            }
+            document.getElementById('score').innerText = `You scored: ${score} out of ${quizData.length}`;
+        };
+        quizContainer.appendChild(button);
+    </script>
+</body>
+</
